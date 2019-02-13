@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -14,14 +23,22 @@
                         <div class="form-group">
                             <label class="col-lg-12 control-label">Post Title</label>
                             <div class="col-lg-12">
-                                <input class="form-control file" name="title" type="text" required>
+                                <input class="form-control file" name="post_title" type="text" required>
                             </div>
                         </div>
                         &nbsp;
                         <div class="form-group">
                             <label class="col-lg-12 control-label">Post Content</label>
                             <div class="col-lg-12">
-                                <textarea class="form-control description" name="body" type="text" required>
+                                <textarea class="form-control description" name="post_content" type="text" required>
+                                </textarea>
+                            </div>
+                        </div>
+                        &nbsp;
+                        <div class="form-group">
+                            <label class="col-lg-12 control-label">Post Excerpt</label>
+                            <div class="col-lg-12">
+                                <textarea class="form-control" name="excerpt" type="text" required>
                                 </textarea>
                             </div>
                         </div>
@@ -29,7 +46,7 @@
                         <div class="form-group">
                             <label class="col-lg-12 control-label">Upload author or book cover photo</label>
                             <div class="col-lg-12">
-                                <input class="form-control file" type="file" name="filename" required>   
+                                <input class="form-control file" type="file" name="image" required>   
                             </div>
                         </div>
                         &nbsp;
