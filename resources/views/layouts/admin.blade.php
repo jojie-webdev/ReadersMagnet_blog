@@ -19,6 +19,7 @@
 	<link href="{{ url('/public/css/font-awesome.min.css') }}" rel="stylesheet">
 	<link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet">
 	<link href="{{ url('/public/css/styles.css') }}" rel="stylesheet">
+	<link href="{{ url('/public/css/styles.css') }}" rel="stylesheet">
 
 	<!-- Datatables -->
 	<link href="https://datatables.yajrabox.com/css/datatables.bootstrap.css" rel="stylesheet">

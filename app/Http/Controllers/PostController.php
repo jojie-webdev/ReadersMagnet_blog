@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use \App\Post;
+use DB;
 
 class PostController extends Controller
 {
@@ -16,7 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user()->id;
+        $posts = DB::table('posts')->where("user_id", "=", $user)->get();
+        $posts = Post::all();
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -43,7 +47,7 @@ class PostController extends Controller
 
         $data = $request->validate([
             'post_title' => 'required',
-            'post_content' => 'string|max:255',
+            'post_content' => 'string|max:2000',
             'excerpt' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,png,gif|max:2048',
             'category' => 'string|max:255',
@@ -52,7 +56,7 @@ class PostController extends Controller
         //initalize image
         $image = " ";
 
-        //If has a filename to be uploaded
+        //If has a image to be uploaded
         if($request->hasfile('image')) 
         { 
             $file = $request->file('image');
@@ -79,7 +83,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('posts.show', ['post' => Post::findOrFail($id)]);
     }
 
     /**

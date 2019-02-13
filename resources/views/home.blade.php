@@ -11,7 +11,7 @@
                 <a href="{{ URL::to('posts/create') }}"><i class="fa fa-circle-o"></i> Create blog here!</a>
             </div>
             <div class="panel-body">
-                <h4>Show all your post</h4>
+                <h4>ACTIVITIES</h4>
             </div>
         </div>
     </div>

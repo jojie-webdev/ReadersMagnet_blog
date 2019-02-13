@@ -81,5 +81,5 @@
 @section('footer')
 <!-- https://artisansweb.net/install-use-tinymce-wysiwyg-html-editor-laravel/ -->
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>tinymce.init({ selector:'textarea.description' });</script>
+<script>tinymce.init({ selector:'textarea.description', forced_root_block : 'p' });</script>
 @endsection

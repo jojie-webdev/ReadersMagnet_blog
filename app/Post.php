@@ -10,7 +10,7 @@ class Post extends Model
         'post_title', 'post_content', 'excerpt', 'image', 'category',
     ];
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function user()
     {
