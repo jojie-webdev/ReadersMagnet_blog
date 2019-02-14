@@ -81,7 +81,7 @@ class RegisterController extends Controller
         //User Rule
         $roles
            ->roles()
-           ->attach(Role::where('name', 'employee')->first());
+           ->attach(Role::where('name', 'author')->first());
         return $roles;
     }
 }

@@ -54,14 +54,14 @@
                             <label class="col-lg-12 control-label">Category</label>
                             <div class="col-lg-12">
                                 <select class="form-control" name="category" required>
-                                    <option value="Uncategorized" >Uncategorized</option>
-                                    <option value="Children's book">Children's book</option>
-                                    <option value="Literature & Fiction & Non-Fiction">Literature & Fiction & Non-Fiction</option>
-                                    <option value="Christian and Inpirational">Christian and Inpirational</option>
-                                    <option value="History">History</option>
-                                    <option value="Health & Fitness">Health & Fitness</option>
-                                    <option value="Computers & Technology">Computers & Technology</option>
-                                    <option value="Sports & Travel1">Sports & Travel</option>
+                                    <option value="1" >Uncategorized</option>
+                                    <option value="2">Children's book</option>
+                                    <option value="3">Literature & Fiction & Non-Fiction</option>
+                                    <option value="4">Christian and Inpirational</option>
+                                    <option value="5">History</option>
+                                    <option value="6">Health & Fitness</option>
+                                    <option value="7">Computers & Technology</option>
+                                    <option value="8">Sports & Travel</option>
                                 </select>
                             </div>
                         </div>

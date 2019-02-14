@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use \App\Post;
+use \App\Category;
 use DB;
 
 class PostController extends Controller
@@ -64,14 +65,20 @@ class PostController extends Controller
             $filename =time().'.'.$extension;
             $file->move(public_path("uploads/"), $filename);
             $post->image = $filename;
-
         }
         $post->post_title = $request->input('post_title');
         $post->post_content = $request->input('post_content');
         $post->excerpt = $request->input('excerpt');
-        $post->category = $request->input('category');
+        $post_category = $request->input('category');
+
+    
         $post->user_id = $user;
         $post->save();
+
+        //Save post_category
+        $category= DB::table('post_category')->insert(
+            ['post_id' => $post->id, 'category_id' => $post_category]
+        ); 
         return back()->with('message', 'Article Added Successfully!!');
     }
 
