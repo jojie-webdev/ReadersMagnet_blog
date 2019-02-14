@@ -19,8 +19,8 @@ class PostController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $posts = DB::table('posts')->where("user_id", "=", $user)->get();
-        $posts = Post::all();
+        $posts = DB::table('posts')->where("user_id", "=", $user)->latest()->get();
+        // $posts = Post::all();
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -48,8 +48,6 @@ class PostController extends Controller
 
         $data = $request->validate([
             'post_title' => 'required',
-            'post_content' => 'string|max:2000',
-            'excerpt' => 'required|string|max:255',
             'image' => 'image|mimes:jpeg,png,gif|max:2048',
             'category' => 'string|max:255',
         ]);
@@ -90,7 +88,15 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return view('posts.show', ['post' => Post::findOrFail($id)]);
+        //get Category name by post id
+        $category = DB::table('categories')
+            ->join('post_category', 'post_category.category_id', '=', 'categories.id')
+            ->select("category_name") 
+            ->where("post_category.post_id", "=", $id)
+            ->first()->category_name;
+        // dd($category);
+        
+        return view('posts.show', ['post' => Post::findOrFail($id), 'category'=> $category] );
     }
 
     /**

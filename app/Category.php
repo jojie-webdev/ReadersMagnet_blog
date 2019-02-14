@@ -13,8 +13,8 @@ class Category extends Model
     // public $timestamps = false;
 
     //Many to Many Relationship
-    public function cat_to_post()
+    public function posts()
     {
-        return $this->belongsToMany( 'App\Post' );
+        return $this->belongsToMany('App\Post');    
     }
 }

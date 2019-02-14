@@ -8,7 +8,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                {{ $post->post_title }} <span class="pull-right" style="color: #e02b20;"><em>Category: {{ $post->category }}</em></span>
+                {{ $post->post_title }} <span class="pull-right" style="color: #e02b20;"><em>Category: {{ $category }}</em></span>
             </div>
             <div class="panel-body">
                  <div class="form-group">
