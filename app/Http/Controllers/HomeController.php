@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \App\User;
+use \App\Post;
 use DB;
 
 class HomeController extends Controller
@@ -25,14 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     { 
-        //$admin = Auth::user()->roles->first()->name;
-
         if(Auth::check()){
             //User is Admin
             if(Auth::user()->isAdmin()){
                 $posts = DB::table('posts')->latest()->get();
-                // $posts = Post::all();
-                // dd($posts);
                 return view('posts.index', ['posts' => $posts]);
             }else{
                 //User Has Post
