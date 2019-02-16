@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class HomeController extends Controller
 {
@@ -22,7 +24,27 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    { 
+        //$admin = Auth::user()->roles->first()->name;
+
+        if(Auth::check()){
+            //User is Admin
+            if(Auth::user()->isAdmin()){
+                $posts = DB::table('posts')->latest()->get();
+                // $posts = Post::all();
+                // dd($posts);
+                return view('posts.index', ['posts' => $posts]);
+            }else{
+                //User Has Post
+                $user = Auth::user()->id;
+                $posts = DB::table('posts')->where("user_id", "=", $user)->latest()->get();
+                // $posts = Post::all();
+                return view('users.index', ['posts' => $posts]);		
+            }
+        }else{
+            //User Has No Post
+            return redirect('/home');	
+        }
+
     }
 }

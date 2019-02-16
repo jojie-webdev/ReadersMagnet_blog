@@ -35,8 +35,8 @@
                     @foreach($users as $user)
                         <tr>
                             <td>{{$user->id}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->mobile_no}}</td>
+                            <td>{{$user->username}}</td>
+                            <td>{{$user->mobile}}</td>
                             <td>{{$user->email}}</td>
                             <!-- show action if user is admin -->
                             @if (Auth::user()->isAdmin())

@@ -18,10 +18,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->id;
-        $posts = DB::table('posts')->where("user_id", "=", $user)->latest()->get();
-        // $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        if(Auth::check()){
+            if(Auth::user()->isAdmin()){
+                $posts = DB::table('posts')->latest()->get();
+                // $posts = Post::all();
+                dd($posts);
+                return view('posts.index', ['posts' => $posts]);
+            }else{
+                return redirect('/home');		
+            }
+        }else{
+            return redirect('/home');	
+        }
     }
 
     /**

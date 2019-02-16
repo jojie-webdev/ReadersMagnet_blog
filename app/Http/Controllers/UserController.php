@@ -18,12 +18,13 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $user = Auth::user();
         // $role = Auth::user();
         // $users = DB::table('users')->simplePaginate(6);
         // $users = DB::table('users')->simplePaginate(12);
         if($user->isAdmin())  {
-            $users = DB::table('users')->simplePaginate(12);
+            $users = DB::table('users')->simplePaginate(50);
             return view('admin.index', ['users' => $users]);
         }
         return view('users.index');

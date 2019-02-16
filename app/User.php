@@ -18,8 +18,10 @@ class User extends Authenticatable
     protected $table = 'users';
     
     protected $fillable = [
-        'username', 'mobie', 'email', 'password',
+        'username', 'mobile', 'email', 'password',
     ];
+
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -32,7 +34,12 @@ class User extends Authenticatable
 
     public function roles()
     {
-      return $this->belongsToMany('App\Role');
+        return $this->belongsToMany('App\Role');
+        $role = Role::with('rolecat')->get();
+
+        foreach($role as $roles){
+          echo  $roles->role_id->name;
+        }
     }
 
     public function isAdmin() {
@@ -40,6 +47,17 @@ class User extends Authenticatable
         foreach ($this->roles()->get() as $role)
         {
             if ($role->name == 'admin')
+            {
+                return true;
+            }
+        }
+    }
+
+    public function isSuperAdmin() {
+
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'super_admin')
             {
                 return true;
             }

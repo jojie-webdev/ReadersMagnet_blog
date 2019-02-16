@@ -68,7 +68,7 @@
                         &nbsp;
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input type="submit" class="btn btn-success" value="Submit">
+                                <input type="submit" class="btn btn-primary" value="Submit">
                             </div>
                         </div>
                 </form><!-- Form END -->
