@@ -95,6 +95,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete
+        $user = User::find($id);
+        $user->delete();
+
+        // redirect
+        return back()->with('message', 'User Successfully DELETED!!');
     }
 }

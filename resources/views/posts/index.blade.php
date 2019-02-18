@@ -53,8 +53,8 @@
                                 <!-- show action if user is admin -->
                                 @if (Auth::user()->isAdmin())
                                     <td>
-                                        <form action="{{url('post', [$post->id])}}" method="POST" class="form-delete">
-                                            <input type="hidden" name="_method" value="PUT">
+                                        <form action="{{url('posts', [$post->id])}}" method="POST" class="form-delete">
+                                            <input type="hidden" name="_method" value="DELETE">
                                             {{ csrf_field() }}
                                             <input type="submit" class="btn btn-danger" value="DELETE">
                                         </form>

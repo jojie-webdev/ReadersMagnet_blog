@@ -17,8 +17,8 @@
 	<!-- direct assets -->
 	<link href="{{ url('/public/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ url('/public/css/font-awesome.min.css') }}" rel="stylesheet">
-	<!-- <link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet">
-	<link href="{{ asset('public/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"> -->
+	<link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet">
+	<link href="{{ asset('public/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{ url('/public/css/styles.css') }}" rel="stylesheet">
 	
     <!-- Fonts -->
@@ -27,6 +27,7 @@
 
 	<!-- Datatables -->
 	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
+	<link href="{{ url('/public/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 	<!-- <link href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" rel="stylesheet"> -->
 
     <!-- Styles -->

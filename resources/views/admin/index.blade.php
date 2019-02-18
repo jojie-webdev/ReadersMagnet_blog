@@ -42,10 +42,10 @@
                             @if (Auth::user()->isAdmin())
                                 <td>
                                     <!-- <button class="btn btn-danger" data-catid={{$user->id}} data-toggle="modal" data-target="#delete">Deactivate</button> -->
-                                    <form action="{{url('admin', [$user->id])}}" method="POST" class="form-delete">
-                                        <input type="hidden" name="_method" value="PUT">
+                                    <form action="{{url('users', [$user->id])}}" method="POST" class="form-delete">
+                                        <input type="hidden" name="_method" value="DELETE">
                                         {{ csrf_field() }}
-                                        <input type="submit" class="btn btn-danger" value="DELETE">
+                                        <input type="submit" class="btn btn-danger confirm" value="DELETE">
                                     </form>
                                 </td>
                             @endif
@@ -56,4 +56,24 @@
         </div>
     </div>
 </div>
+
+<!-- Confirmation Modal -->
+<div class="modal" id="confirm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" id="delete-btn">Submit</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
