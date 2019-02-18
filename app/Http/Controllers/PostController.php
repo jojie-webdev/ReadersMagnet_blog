@@ -22,7 +22,8 @@ class PostController extends Controller
             if(Auth::user()->isAdmin()){
                 $posts = DB::table('posts')->latest()->get();
                 // $posts = Post::all();
-                dd($posts);
+                // dd($posts);
+                
                 return view('posts.index', ['posts' => $posts]);
             }else{
                 return redirect('/home');		

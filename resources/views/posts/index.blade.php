@@ -1,6 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="row">
     <div class="col-lg-12">
         <h2>Hi, {{{ isset(Auth::user()->username) ? Auth::user()->username : Auth::user()->email }}}!</h2>
@@ -11,7 +21,7 @@
                 <a href="{{ URL::to('users') }}"><i class="fa fa-circle-o"></i> Show Users!</a>
             </div>
             <div class="panel-body">
-                <h3>Show all user post</h3>
+                <h3><a href="#">Show Posts <span class="badge">{{$posts->count()}}</span></a></h3>
                 <table id="users-table" class="table table-striped" data-form="deleteForm">
                     <thead>
                         <tr>

@@ -17,19 +17,26 @@
 	<!-- direct assets -->
 	<link href="{{ url('/public/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ url('/public/css/font-awesome.min.css') }}" rel="stylesheet">
-	<link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet">
+	<!-- <link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet">
+	<link href="{{ asset('public/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css"> -->
 	<link href="{{ url('/public/css/styles.css') }}" rel="stylesheet">
-	<link href="{{ url('/public/css/styles.css') }}" rel="stylesheet">
-
-	<!-- Datatables -->
-	<link href="https://datatables.yajrabox.com/css/datatables.bootstrap.css" rel="stylesheet">
-
+	
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"  type="text/css">
+
+	<!-- Datatables -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
+	<!-- <link href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" rel="stylesheet"> -->
 
     <!-- Styles -->
-    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+	<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+	<style>
+		a {
+			color: #4b4e50!important;
+			text-decoration: none!important;
+		}
+	</style>
 </head>
 <body>
 	
@@ -40,7 +47,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span></button>
-					<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+					<a class="navbar-brand" style="color: #fff!important;" href="#"><span>Lumino</span>Admin</a>
 				</div>
 			</div>
 		</nav>
@@ -94,12 +101,9 @@
 			@yield('content')
 		</div><!--/.main-->
 		@yield('footer')
-	
-		<script src="https://datatables.yajrabox.com/js/jquery.min.js"></script>
-		<script src="https://datatables.yajrabox.com/js/bootstrap.min.js"></script>
-		<script src="https://datatables.yajrabox.com/js/jquery.dataTables.min.js"></script>
-		<script src="https://datatables.yajrabox.com/js/datatables.bootstrap.js"></script>
+
 		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 		<script src="{{asset('js/app.js')}}"></script>
 	
 </body>

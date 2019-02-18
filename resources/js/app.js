@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import $ from 'jquery';
+import 'datatables.net';
+
 
 /**
  * The following block of code may be used to automatically register your
