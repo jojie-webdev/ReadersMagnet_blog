@@ -18,7 +18,7 @@ class Post extends Model
     //One to One Relationship
     public function users()
     {
-        return $this->belongsTo('App\User')->withDefault();
+        return $this->belongsTo('App\User', 'post_users', 'post_id', 'user_id')->withDefault();
     }
 
     //Many to Many Relationship

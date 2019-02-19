@@ -25,6 +25,7 @@
                 <table id="users-table" class="table table-striped" data-form="deleteForm">
                     <thead>
                         <tr>
+                            <th>NAME</th>
                             <th>TITLE</th>
                             <th>EXCERPT</th>
                             <th>DATE</th>
@@ -36,8 +37,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                            use \App\User;
+                        ?>
                         @foreach($posts as $post)
                             <tr>
+                                <td>
+                                    <?php 
+                                        $users = User::all();
+
+                                        foreach($users as $user) {
+                                            $user_id = $user->id;
+                                            $username = $user->username;
+                                            if( $post->user_id === $user_id) {
+                                                echo $username;
+                                            }
+                                        }
+                                    ?>
+                                </td>
                                 <td>{{$post->post_title}}</td>
                                 <td>{{strip_tags($post->excerpt)}}</td>
                                 <td>{{$post->created_at}}</td>
@@ -51,8 +68,8 @@
                                 <!-- show action if user is admin -->
                                 @if (Auth::user()->isAdmin())
                                     <td>
-                                        <form action="{{url('posts', [$post->id])}}" method="POST" class="form-delete">
-                                            <input type="hidden" name="_method" value="DELETE">
+                                        <form action="{{url('post', [$post->id])}}" method="POST" class="form-delete">
+                                            <input type="hidden" name="_method" value="PUT">
                                             {{ csrf_field() }}
                                             <input type="submit" class="btn btn-danger" value="DELETE">
                                         </form>
@@ -66,7 +83,6 @@
         </div>
     </div>
 </div>
-
 <!-- Confirmation Modal -->
 <div class="modal" id="confirm">
     <div class="modal-dialog">
@@ -85,5 +101,4 @@
         </div>
     </div>
 </div>
-
 @endsection

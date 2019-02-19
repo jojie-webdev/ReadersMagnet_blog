@@ -27,5 +27,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
 
     //POST ROUTE
+    Route::get('posts/all', 'PostController@view_post');
     Route::resource('posts', 'PostController');
 });
