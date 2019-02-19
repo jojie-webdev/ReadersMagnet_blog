@@ -29,7 +29,7 @@ class HomeController extends Controller
     { 
         if(Auth::check()){
             //User is Admin
-            if(Auth::user()->isAdmin()){
+            if(Auth::user()->isAdmin() || Auth::user()->isSuperAdmin()){
                 $posts = DB::table('posts')->latest()->get();
                 return view('posts.index', ['posts' => $posts]);
             }else{

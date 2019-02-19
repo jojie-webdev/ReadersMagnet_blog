@@ -31,7 +31,7 @@
                             <th>DATE</th>
                             <th>SHOW</th>
                             <!-- show action if user is admin -->
-                            @if (Auth::user()->isAdmin())
+                            @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                 <th>ACTION</th>
                             @endif
                         </tr>
@@ -66,12 +66,18 @@
                                 </form><!-- Form END -->
                                 </td>
                                 <!-- show action if user is admin -->
-                                @if (Auth::user()->isAdmin())
+                                @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                     <td>
                                         <form action="{{url('post', [$post->id])}}" method="POST" class="form-delete">
                                             <input type="hidden" name="_method" value="PUT">
                                             {{ csrf_field() }}
-                                            <input type="submit" class="btn btn-danger" value="DELETE">
+                                            @if(Auth::check())
+                                                @if (Auth::user()->isSuperAdmin())
+                                                    <input type="submit" class="btn btn-danger" value="DELETE">
+                                                @else
+                                                    <input type="submit" class="btn btn-danger" value="DELETE" disabled="">
+                                                @endif
+                                            @endif
                                         </form>
                                     </td>
                                 @endif
