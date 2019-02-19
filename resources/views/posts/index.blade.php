@@ -12,9 +12,6 @@
 @endif
 
 <div class="row">
-    <div class="col-lg-12">
-        <h2>Hi, {{{ isset(Auth::user()->username) ? Auth::user()->username : Auth::user()->email }}}!</h2>
-    </div>
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">

@@ -26,7 +26,7 @@
                         <th>MOBILE</th>
                         <th>EMAIL</th>
                         <!-- show action if user is admin -->
-                        @if (Auth::user()->isAdmin())
+                        @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                             <th>ACTION</th>
                         @endif
                     </tr>
@@ -39,13 +39,23 @@
                             <td>{{$user->mobile}}</td>
                             <td>{{$user->email}}</td>
                             <!-- show action if user is admin -->
-                            @if (Auth::user()->isAdmin())
+                            @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                 <td>
-                                    <!-- <button class="btn btn-danger" data-catid={{$user->id}} data-toggle="modal" data-target="#delete">Deactivate</button> -->
                                     <form action="{{url('users', [$user->id])}}" method="POST" class="form-delete">
-                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_method" value="PUT">
                                         {{ csrf_field() }}
-                                        <input type="submit" class="btn btn-danger confirm" value="DELETE">
+                                        @if(Auth::check())
+                                            @if (Auth::user()->isSuperAdmin())
+                                                <!-- disable delete button in superadmin -->
+                                                @if (Auth::id() === $user->id)
+                                                    <input type="submit" class="btn btn-danger" value="DELETE" disabled="">
+                                                @else
+                                                    <input type="submit" class="btn btn-danger" value="DELETE">
+                                                @endif
+                                            @else
+                                                <input type="submit" class="btn btn-danger" value="DELETE" disabled="">
+                                            @endif
+                                        @endif
                                     </form>
                                 </td>
                             @endif

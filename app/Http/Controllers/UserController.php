@@ -23,7 +23,7 @@ class UserController extends Controller
         // $role = Auth::user();
         // $users = DB::table('users')->simplePaginate(6);
         // $users = DB::table('users')->simplePaginate(12);
-        if($user->isAdmin())  {
+        if($user->isAdmin() || $user->isSuperAdmin())  {
             $users = DB::table('users')->simplePaginate(50);
             return view('admin.index', ['users' => $users]);
         }
