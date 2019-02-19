@@ -18,7 +18,8 @@
                 <a href="{{ URL::to('users') }}"><i class="fa fa-circle-o"></i> Show Users!</a>
             </div>
             <div class="panel-body">
-                <h3><a href="#">Show Posts <span class="badge">{{$posts->count()}}</span></a></h3>
+                <h3><strong><a href="#">Show Posts <span class="badge">{{$posts->count()}}</span></a></strong></h3>
+                <hr />
                 <table id="users-table" class="table table-striped" data-form="deleteForm">
                     <thead>
                         <tr>
@@ -65,8 +66,8 @@
                                 <!-- show action if user is admin -->
                                 @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                     <td>
-                                        <form action="{{url('post', [$post->id])}}" method="POST" class="form-delete">
-                                            <input type="hidden" name="_method" value="PUT">
+                                        <form action="{{url('posts', [$post->id])}}" method="POST" class="form-delete">
+                                            <input type="hidden" name="_method" value="DELETE">
                                             {{ csrf_field() }}
                                             @if(Auth::check())
                                                 @if (Auth::user()->isSuperAdmin())

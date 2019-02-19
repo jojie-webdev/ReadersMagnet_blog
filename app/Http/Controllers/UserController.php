@@ -72,7 +72,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        // dd($user);
+        return view('users.profile', compact('user'));
     }
 
     /**
@@ -84,7 +86,50 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        $data = $request->validate([
+            'username' => 'required',
+            'mobile' => ['required', 'string','max:255'],
+            'password' => 'nullable',
+            'confirm-password' => 'nullable',
+            'filename' => 'image|mimes:jpeg,png,gif|max:2048',
+        ]);
+
+        //initalize image
+        $image = " ";
+
+        //If has a filename to be uploaded
+        if($request->hasfile('filename')) 
+        { 
+            $file = $request->file('filename');
+            $extension = rand() .'.'.$file->getClientOriginalExtension(); // getting image extension
+            $filename =time().'.'.$extension;
+            $file->move(public_path("uploads/"), $filename);
+            $user->filename = $filename;
+
+        }
+        
+        //Password Validation
+        if ($request->input('password') !== $request->input('confirm-password')) {
+            return back()->with('message-error', 'Password Confirmation does not matched!!!');
+        }
+        else if (empty($request->input('password') && $request->input('confirm-password'))) {
+            $user->username = $request->input('username');
+            $user->mobile = $request->input('mobile');
+            $user->save();
+
+            //get path
+            // return back()->with('message', 'Updated Successfully!')->with('path', $image);
+            return back()->with('message', 'Updated Successfully!');
+        }
+        else {
+            $user->username = $request->input('username');
+            $user->mobile = $request->input('mobile');
+            $user->password = bcrypt($request->input('password'));
+            $user->save();
+            return back()->with('message', 'Updated Successfully!!');
+        }
+
     }
 
     /**

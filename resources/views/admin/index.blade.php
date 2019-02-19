@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Show All Users</div>
+            <div class="panel-heading">Users</div>
             <table id="users-table" class="table table-striped" data-form="deleteForm">
                 <thead>
                     <tr>
@@ -42,7 +42,7 @@
                             @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                 <td>
                                     <form action="{{url('users', [$user->id])}}" method="POST" class="form-delete">
-                                        <input type="hidden" name="_method" value="PUT">
+                                        <input type="hidden" name="_method" value="DELETE">
                                         {{ csrf_field() }}
                                         @if(Auth::check())
                                             @if (Auth::user()->isSuperAdmin())

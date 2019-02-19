@@ -62,7 +62,8 @@
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<div class="profile-sidebar">
 				<div class="profile-userpic">
-					<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+				<img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" alt="User Image">
+
 				</div>
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">{{{ isset(Auth::user()->username) ? Auth::user()->username : Auth::user()->email }}}</div>
@@ -78,6 +79,7 @@
 			</form>
 			<ul class="nav menu">
 				<li><a href="{{ route('home') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="{{ url('users/{user}/edit') }}"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
 				<!-- Authentication Links -->
 				@guest
 					<li class="nav-item">
