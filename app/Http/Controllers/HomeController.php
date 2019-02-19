@@ -31,6 +31,7 @@ class HomeController extends Controller
             //User is Admin
             if(Auth::user()->isAdmin()){
                 $posts = DB::table('posts')->latest()->get();
+                // return 'test';
                 return view('posts.index', ['posts' => $posts]);
             }else{
                 //User Has Post

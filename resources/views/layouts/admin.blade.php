@@ -9,26 +9,24 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 	<!-- assets laravel command -->
-    <!-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/datepicker3.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('public/images/sort_both.png') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/css/styles.css') }}" rel="stylesheet">
 
 	<!-- direct assets -->
-	<link href="{{ url('/public/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="{{ url('/public/css/font-awesome.min.css') }}" rel="stylesheet">
-	<link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet">
+	<!-- <link href="{{ url('/public/css/bootstrap.min.css') }}" rel="stylesheet"> -->
+	<!-- <link href="{{ asset('/public/css/font-awesome.min.css') }}" rel="stylesheet"> -->
+	<!-- <link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet"> -->
 	<link href="{{ asset('public/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css">
-	<link href="{{ url('/public/css/styles.css') }}" rel="stylesheet">
+	<link href="{{ asset('/public/css/styles.css') }}" rel="stylesheet">
 	
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"  type="text/css">
 
-	<!-- Datatables -->
-	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/> -->
-	<link href="{{ url('/public/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-	<!-- <link href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" rel="stylesheet"> -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
     <!-- Styles -->
 	<!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
@@ -36,6 +34,15 @@
 		a {
 			color: #4b4e50!important;
 			text-decoration: none!important;
+		}
+		.modal-backdrop {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1040;
+			background-color: #0000;
 		}
 	</style>
 </head>
@@ -103,9 +110,8 @@
 		</div><!--/.main-->
 		@yield('footer')
 
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-		<script src="{{asset('js/app.js')}}"></script>
+		<script src="{{asset('public/js/app.js')}}"></script>
 	
 </body>
 </html>

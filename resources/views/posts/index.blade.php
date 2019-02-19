@@ -25,7 +25,6 @@
                 <table id="users-table" class="table table-striped" data-form="deleteForm">
                     <thead>
                         <tr>
-                            <th>NAME</th>
                             <th>TITLE</th>
                             <th>EXCERPT</th>
                             <th>DATE</th>
@@ -39,7 +38,6 @@
                     <tbody>
                         @foreach($posts as $post)
                             <tr>
-                                <td>{!! \App\User::findOrFail($post->user_id)->username; !!}</td>
                                 <td>{{$post->post_title}}</td>
                                 <td>{{strip_tags($post->excerpt)}}</td>
                                 <td>{{$post->created_at}}</td>
@@ -68,4 +66,24 @@
         </div>
     </div>
 </div>
+
+<!-- Confirmation Modal -->
+<div class="modal" id="confirm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" id="delete-btn">Submit</button>
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
