@@ -47,15 +47,24 @@
                                     <div class="form-group">
                                         <label class="col-lg-12 control-label">Mobile Number</label>
                                         <div class="col-lg-12">
-                                        <input class="form-control" name="mobile" type="text" value="{{$user->mobile}}" >
+                                        <input class="form-control" name="mobile" type="number" id="txtPhone" value="{{$user->mobile}}" >
                                         </div>
                                     </div>
+                                    @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Password:</label>
+                                            <div class="col-md-12">
+                                                <input class="form-control" type="password" name="password" disabled>
+                                            </div>
+                                        </div>
+                                    @else
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Password:</label>
                                         <div class="col-md-12">
-                                            <input class="form-control" type="password" name="password" >
+                                            <input class="form-control" type="password" name="password">
                                         </div>
                                     </div>
+                                    @endif
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Confirm Password:</label>
                                         <div class="col-md-12">

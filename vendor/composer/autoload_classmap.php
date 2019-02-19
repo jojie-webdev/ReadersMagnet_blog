@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

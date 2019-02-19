@@ -38,6 +38,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function guide()
+    {
+        return view('posts.guide');
+    }
+
+
     public function create()
     {
         return view('posts.create');
@@ -86,7 +92,8 @@ class PostController extends Controller
         $category= DB::table('post_category')->insert(
             ['post_id' => $post->id, 'category_id' => $post_category]
         ); 
-        return back()->with('message', 'Article Added Successfully!!');
+
+        return back()->with('message', 'Thank you for submitting your article. A team will review your submission and will give you feedback via e-mail within the next 72 hours.');
     }
 
     /**

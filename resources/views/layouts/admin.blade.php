@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>ReadersMagnet Authors' Lounge </title>
 	<!-- assets laravel command -->
     <link href="{{ asset('public/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('public/images/sort_both.png') }}" rel="stylesheet">
@@ -55,7 +55,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span></button>
-					<a class="navbar-brand" style="color: #fff!important;" href="#"><span>Lumino</span>Admin</a>
+					<a class="navbar-brand" style="color: #fff!important;" href="#"><span>ReadersMagnet</span>Authors' Lounge</a>
 				</div>
 			</div>
 		</nav>
@@ -79,6 +79,7 @@
 			</form>
 			<ul class="nav menu">
 				<li><a href="{{ route('home') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+				<li><a href="{{ url('posts/guide') }}"><em class="fa fa-circle-o">&nbsp;</em> Guidelines</a></li>
 				<li><a href="{{ url('users/{user}/edit') }}"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
 				<!-- Authentication Links -->
 				@guest

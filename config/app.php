@@ -177,6 +177,7 @@ return [
         Yajra\DataTables\DataTablesServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class
 
     ],
 
@@ -229,6 +230,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
 
     ],
 

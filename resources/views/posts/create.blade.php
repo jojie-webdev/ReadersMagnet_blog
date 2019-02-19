@@ -18,7 +18,7 @@
             </div>
             <div class="panel-body">
                 <!-- Add blog -->
-                <form action="{{ url('posts') }}" method="POST" enctype="multipart/form-data" class="add-note">
+                <form class="article" action="{{ url('posts') }}" method="POST" enctype="multipart/form-data" class="add-note">
                 {{ csrf_field() }}
                         <div class="form-group">
                             <label class="col-lg-12 control-label">Post Title</label>
@@ -68,7 +68,7 @@
                         &nbsp;
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input type="submit" class="btn btn-primary" value="Submit">
+                                <input type="submit" class="btn btn-primary" value="Submit" onClick="confSubmit(this.form);">
                             </div>
                         </div>
                 </form><!-- Form END -->
@@ -82,4 +82,13 @@
 <!-- https://artisansweb.net/install-use-tinymce-wysiwyg-html-editor-laravel/ -->
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea.description', forced_root_block : 'p' });</script>
+
+<script>
+
+  $(".article").on("submit", function(){
+        return confirm("Are you sure you want to submit your article?");
+    });
+</script>
+
+
 @endsection

@@ -20,6 +20,7 @@
                         {{ csrf_field() }}
                             <input type="submit" class="btn btn-default" value="Show more...">
                     </form><!-- Form END -->
+                    <hr />
                     
                 @endforeach
             </div>

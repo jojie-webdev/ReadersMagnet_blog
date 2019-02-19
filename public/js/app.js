@@ -13913,24 +13913,50 @@ Vue.component('example-component', __webpack_require__(40).default);
  */
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 //Datatables 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(function () {
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#users-table').DataTable({
-    "pagingType": "simple"
-  });
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#users-table').DataTable({
+        "pagingType": "simple"
+    });
 });
 
 //Confirmation action button
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()('table[data-form="deleteForm"]').on('click', '.form-delete', function (e) {
-  e.preventDefault();
-  var $form = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#confirm').modal({ backdrop: 'static', keyboard: false }).on('click', '#delete-btn', function () {
-    $form.submit();
-  });
+    e.preventDefault();
+    var $form = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#confirm').modal({ backdrop: 'static', keyboard: false }).on('click', '#delete-btn', function () {
+        $form.submit();
+    });
 });
+
+//Phone Number Validation - US Format Only
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(function () {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#txtPhone').blur(function (e) {
+        if (validatePhone('txtPhone')) {
+            //$('#spnPhoneStatus').html('Valid');
+            //$('#spnPhoneStatus').css('color', 'green');
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()("button.btn.btn-primary").removeAttr("disabled");
+        } else {
+            alert('Phone number is not a valid US format. Submit button will be disabled!');
+            __WEBPACK_IMPORTED_MODULE_0_jquery___default()("button.btn.btn-primary").attr("disabled", "disabled");
+            //$('#spnPhoneStatus').html('Invalid');
+            //$('#spnPhoneStatus').css('color', 'red');
+        }
+    });
+});
+
+function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^\(?(\d{3})\)?[-\. ]?(\d{3})[-\. ]?(\d{4})$/;
+    if (filter.test(a)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /***/ }),
 /* 13 */

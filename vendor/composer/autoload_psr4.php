@@ -68,5 +68,6 @@ return array(
     'Collective\\Html\\' => array($vendorDir . '/laravelcollective/html/src'),
     'BeyondCode\\DumpServer\\' => array($vendorDir . '/beyondcode/laravel-dump-server/src'),
     'App\\' => array($baseDir . '/app'),
+    'Anhskohbo\\NoCaptcha\\' => array($vendorDir . '/anhskohbo/no-captcha/src'),
     '' => array($vendorDir . '/nesbot/carbon/src'),
 );
