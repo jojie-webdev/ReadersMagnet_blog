@@ -21,6 +21,9 @@
             <div class="panel-body">
                 <h3><strong><a href="#">Show Posts <span class="badge">{{$posts->count()}}</span></a></strong></h3>
                 <hr />
+                <div class="pull-left" style="margin-bottom: 5px;">
+                    <a href="{{ url('postExcel/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
+                </div>
                 <table id="users-table" class="table table-striped" data-form="deleteForm">
                     <thead>
                         <tr>

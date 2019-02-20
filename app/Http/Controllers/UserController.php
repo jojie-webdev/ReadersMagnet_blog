@@ -8,6 +8,7 @@ use DataTables;
 use \App\User;
 use \App\Role;
 use DB;
+use Excel;
 
 class UserController extends Controller
 {
@@ -30,6 +31,18 @@ class UserController extends Controller
         return view('users.index');
         // return DataTables::of(User::query())->make(true);
 
+    }
+
+    public function downloadExcel($type)
+    {
+        $data = User::get()->toArray();
+            
+        return Excel::create('users', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+                $sheet->fromArray($data);
+            });
+        })->download($type);
     }
 
     /**

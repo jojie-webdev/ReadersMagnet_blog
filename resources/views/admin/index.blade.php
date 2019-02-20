@@ -17,6 +17,8 @@
     </div>
     <div class="col-md-12">
         <div class="panel panel-default">
+            
+        <a href="{{ url('downloadExcel/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
             <div class="panel-heading">Users</div>
             <table id="users-table" class="table table-striped" data-form="deleteForm">
                 <thead>

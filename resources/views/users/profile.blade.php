@@ -84,4 +84,34 @@
         </div>
     </div>
 </div>
+<script>
+//Phone Number Validation - US Format Only
+$(document).ready(function() {
+    $('#txtPhone').blur(function(e) {
+        if (validatePhone('txtPhone')) {
+            //$('#spnPhoneStatus').html('Valid');
+            //$('#spnPhoneStatus').css('color', 'green');
+            $("input.btn.btn-success").removeAttr("disabled");
+        }
+        else {
+            alert('Phone number is not a valid US format. Submit button will be disabled!');
+            $("input.btn.btn-success").attr("disabled", "disabled");
+            //$('#spnPhoneStatus').html('Invalid');
+            //$('#spnPhoneStatus').css('color', 'red');
+        }
+    });
+});
+
+function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^\(?(\d{3})\)?[-\. ]?(\d{3})[-\. ]?(\d{4})$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+</script>
 @endsection

@@ -22,11 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function() {
     
     // dataTables USERS ROUTE
+    Route::get('downloadExcel/{type}', 'UserController@downloadExcel');
     Route::get('/users/displaydata', 'UserController@create');
     Route::get('index', 'UserController@index');
     Route::resource('users', 'UserController');
 
     //POST ROUTE
+    Route::get('postExcel/{type}', 'PostController@postExcel');
     Route::get('posts/guide', 'PostController@guide');
     Route::resource('posts', 'PostController');
 });

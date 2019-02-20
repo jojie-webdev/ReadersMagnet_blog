@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use \App\Post;
 use \App\Category;
 use DB;
+use Excel;
 
 class PostController extends Controller
 {
@@ -31,6 +32,18 @@ class PostController extends Controller
         }else{
             return redirect('/home');	
         }
+    }
+
+    public function postExcel($type)
+    {
+        $data = Post::get()->toArray();
+            
+        return Excel::create('articles', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data)
+            {
+                $sheet->fromArray($data);
+            });
+        })->download($type);
     }
 
     /**
