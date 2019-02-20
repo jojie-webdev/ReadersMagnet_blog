@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 
 @section('content')
@@ -43,12 +44,14 @@
                                 <td>
                                     <?php 
                                         $users = User::all();
+                                        
 
                                         foreach($users as $user) {
                                             $user_id = $user->id;
                                             $username = $user->username;
-                                            if( $post->user_id === $user_id) {
-                                                echo $username;
+                                            // echo $username;
+                                            if( $post->user_id == $user_id) {
+                                                echo $user->username;
                                             }
                                         }
                                     ?>

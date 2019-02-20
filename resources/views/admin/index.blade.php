@@ -25,6 +25,7 @@
                         <th>NAME</th>
                         <th>MOBILE</th>
                         <th>EMAIL</th>
+                        <th>NO. OF POST</th>
                         <!-- show action if user is admin -->
                         @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                             <th>ACTION</th>
@@ -38,6 +39,7 @@
                             <td>{{$user->username}}</td>
                             <td>{{$user->mobile}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{ App\Post::where('user_id', $user->id)->count() }}</td>
                             <!-- show action if user is admin -->
                             @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                 <td>

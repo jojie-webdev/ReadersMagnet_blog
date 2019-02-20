@@ -15,7 +15,11 @@
                         <!-- left column -->
                         <div class="col-md-3">
                             <div class="text-center">
-                            <img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" width="150" height="150" alt="User Image">
+                                @if (File::exists(public_path("assets/uploads/".Auth::user()->filename)))
+                                    <img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" width="150" height="150" alt="User Image">
+                                @else 
+                                    <img src="{{ asset('public/uploads/Dummy-image.jpg')}}" class="img-circle master" width="150" height="150">
+                                @endif
                                 <h6>Upload a different photo...</h6>
                                 <input class="form-control file" type="file" name="filename">
                             </div>

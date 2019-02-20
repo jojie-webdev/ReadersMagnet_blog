@@ -38,7 +38,10 @@ const app = new Vue({
 //Datatables 
 $(function() {
     $('#users-table').DataTable({
-      "pagingType": "simple"
+	  	"pagingType": "simple",
+		buttons: [
+			{ extend:'copy', attr: { id: 'allan' } }, 'csv', 'excel', 'pdf', 'print'
+		]
     });
 });
 

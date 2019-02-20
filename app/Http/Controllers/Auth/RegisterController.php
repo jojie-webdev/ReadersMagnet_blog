@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'g-recaptcha-response' => 'required|captcha',
+            'filename' => 'Dummy-image.jpg',
         ]);
 
         //Save role_user default type 1 = user

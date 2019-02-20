@@ -20,7 +20,7 @@
 	<!-- <link href="{{ asset('/public/css/font-awesome.min.css') }}" rel="stylesheet"> -->
 	<!-- <link href="{{ url('/public/css/datepicker3.css') }}" rel="stylesheet"> -->
 	<link href="{{ asset('public/css/jquery.dataTables.css')}}" rel="stylesheet" type="text/css">
-	<link href="{{ asset('/public/css/styles.css') }}" rel="stylesheet">
+	<!-- <link href="{{ asset('/public/css/styles.css') }}" rel="stylesheet"> -->
 	
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -62,8 +62,12 @@
 		<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 			<div class="profile-sidebar">
 				<div class="profile-userpic">
-				<img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" alt="User Image">
-
+				
+				@if (File::exists(public_path("assets/uploads/".Auth::user()->filename)))
+					<img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" alt="User Image">
+				@else 
+					<img src="{{ asset('public/uploads/Dummy-image.jpg')}}">
+				@endif
 				</div>
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">{{{ isset(Auth::user()->username) ? Auth::user()->username : Auth::user()->email }}}</div>
