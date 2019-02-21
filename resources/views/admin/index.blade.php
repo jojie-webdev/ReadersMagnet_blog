@@ -24,6 +24,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>AVATAR</th>
                         <th>NAME</th>
                         <th>MOBILE</th>
                         <th>EMAIL</th>
@@ -38,10 +39,23 @@
                     @foreach($users as $user)
                         <tr>
                             <td>{{$user->id}}</td>
+                            <td>
+                                @if ($user->filename === null)
+                					<img src="{{ asset('public/uploads/'.'Dummy-image.jpg')  }}" class="img-circle master" width="50" height="50" alt="User Image">
+                                @else 
+                					<img src="{{ asset('public/uploads/'.$user->filename)}}" class="img-circle master" width="50" height="50">
+                				@endif
+                            </td>
                             <td>{{$user->username}}</td>
                             <td>{{$user->mobile}}</td>
                             <td>{{$user->email}}</td>
-                            <td>{{ App\Post::where('user_id', $user->id)->count() }}</td>
+                            <td>
+                                @if ($user->no_of_post != null)
+                					{{ $user->no_of_post }}
+                                @else 
+                					{{ 0 }}
+                				@endif
+                            </td>
                             <!-- show action if user is admin -->
                             @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                 <td>

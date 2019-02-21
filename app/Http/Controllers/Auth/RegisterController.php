@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'mobile' => $data['mobile'],
             'email' => $data['email'],
+            'no_of_post' => 0,
             'password' => Hash::make($data['password']),
             'g-recaptcha-response' => 'required|captcha',
             'filename' => 'Dummy-image.jpg',
