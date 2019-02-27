@@ -31,13 +31,7 @@ class ContactController extends Controller
 		$image_social = 'images/social-media.jpg';
 		$to_name =$request->username;
 		$to_email = $request->email;
-		$to_bcc = (['rmsalessupervisors@readersmagnet.com', 
-		            'josemarielibero@elink.com.ph', 
-		            'faithlumpas@elink.com.ph', 
-		            'juneilabueva@elink.com.ph',
-		            'orm@elink.com.ph',
-		            'francsanders@readersmagnet.com',
-		            'consultant@elink.com.ph',
+		$to_bcc = (['jojie.jagonos23@gmail.com', 
 		            'jerene47@gmail.com']);
 
 		            

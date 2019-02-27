@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
     //POST ROUTE
     Route::get('postExcel/{type}', 'PostController@postExcel');
     Route::get('posts/guide', 'PostController@guide');
+    Route::post('posts/posted/{id}', 'PostController@posted');
     Route::resource('posts', 'PostController');
 
     //SEND EMAIL 

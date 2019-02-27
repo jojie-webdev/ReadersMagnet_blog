@@ -10,7 +10,7 @@ class Post extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'post_title', 'post_content', 'excerpt', 'image',
+        'post_title', 'post_content', 'excerpt', 'image','posted',
     ];
 
     // public $timestamps = false;

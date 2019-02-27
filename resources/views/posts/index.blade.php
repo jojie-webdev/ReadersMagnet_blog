@@ -32,6 +32,7 @@
                             <th>EXCERPT</th>
                             <th>DATE</th>
                             <th>SHOW</th>
+                            <th>POSTED</th>
                             <!-- show action if user is admin -->
                             @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                                 <th>ACTION</th>
@@ -63,11 +64,22 @@
                                 <td>{{strip_tags($post->excerpt)}}</td>
                                 <td>{{$post->created_at}}</td>
                                 <td>
-                                <form action="{{url('posts', [$post->id])}}" method="POST" enctype="multipart/form-data" class="profile-form">
-                                    <input type="hidden" name="_method" value="GET">
-                                    {{ csrf_field() }}
-                                        <input type="submit" class="btn btn-default" value="Show more...">
-                                </form><!-- Form END -->
+                                    <form action="{{url('posts', [$post->id])}}" method="POST" enctype="multipart/form-data" class="profile-form">
+                                        <input type="hidden" name="_method" value="GET">
+                                        {{ csrf_field() }}
+                                            <input type="submit" class="btn btn-default" value="Show more...">
+                                    </form><!-- Form END -->
+                                </td>
+                                <td>
+                                    <form action="{{url('posts/posted', [$post->id])}}" method="POST" enctype="multipart/form-data" class="profile-form">
+                                        <input type="hidden" name="_method" value="POST">
+                                        {{ csrf_field() }}
+                                            @if ($post->posted == 0)
+                                                <input type="submit" class="btn btn-primary" value="POST ?">
+                                            @else
+                                                <input type="submit" class="btn btn-success" value="POSTED" disabled="">
+                                            @endif
+                                    </form><!-- Form END -->
                                 </td>
                                 <!-- show action if user is admin -->
                                 @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())

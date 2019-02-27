@@ -95,7 +95,9 @@ class PostController extends Controller
         $post->post_title = $request->input('post_title');
         $post->post_content = $request->input('post_content');
         $post->excerpt = $request->input('excerpt');
+        $post->posted = 0;
         $post_category = $request->input('category');
+        
 
     
         $post->user_id = $user;
@@ -171,5 +173,14 @@ class PostController extends Controller
  
          // redirect
          return back()->with('message', 'Article Successfully DELETED!!');
+    }
+
+    public function posted($id)
+    {
+        // return 'test';       
+        POST::where('id', $id)
+          ->update(['posted' => 1]);
+         // redirect
+         return back()->with('message', 'Article change status to Posted!');
     }
 }
