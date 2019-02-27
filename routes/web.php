@@ -31,4 +31,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('postExcel/{type}', 'PostController@postExcel');
     Route::get('posts/guide', 'PostController@guide');
     Route::resource('posts', 'PostController');
+
+    //SEND EMAIL 
+    Route::get('contact/form/{id}/{username}/{email}', 'ContactController@showForm')->name('contact.show');
+    Route::post('contact', 'ContactController@sendEmail')->name('contact.send');
 });

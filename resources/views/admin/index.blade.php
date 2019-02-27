@@ -33,6 +33,7 @@
                         @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())
                             <th>ACTION</th>
                         @endif
+                        <th>SEND EMAIL</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,6 +78,17 @@
                                     </form>
                                 </td>
                             @endif
+                            <td>
+                                <form action="{{url('contact/form', [$user->id, $user->username, $user->email])}}" method="GET">
+                                    <input type="hidden" name="_method" value="GET">
+                                    {{ csrf_field() }}
+                                    @if(Auth::check())
+                                        @if (Auth::user()->isAdmin())
+                                            <input type="submit" class="btn btn-success" value="SEND">
+                                        @endif               
+                                    @endif
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
