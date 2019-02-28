@@ -9,6 +9,7 @@
 
     <title>ReadersMagnet Authors' Lounge </title>
 	<!-- assets laravel command -->
+	<link rel="icon" type="image/png" href="http://www.elink.com.ph/wp-content/uploads/2016/01/elink-logo-site.png">
     <link href="{{ asset('public/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('public/images/sort_both.png') }}" rel="stylesheet">
     <link href="{{ asset('public/css/font-awesome.min.css') }}" rel="stylesheet">

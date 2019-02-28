@@ -108,7 +108,7 @@ class PostController extends Controller
             ['post_id' => $post->id, 'category_id' => $post_category]
         ); 
 
-        //Save no of post user
+        //Save no. of post user
         DB::table('users')
             ->where('id', $user)
             ->increment('no_of_post', 1);

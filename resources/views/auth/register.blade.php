@@ -29,7 +29,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input type="number" id="txtPhone" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required autofocus>
+                                <input type="number" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" name="mobile" value="{{ old('mobile') }}" required autofocus>
 
                                 @if ($errors->has('mobile'))
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row {{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group row {{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Captcha</label>
                             <div class="col-md-6">
                                 {!! app('captcha')->display() !!}
@@ -95,8 +95,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
-
+                        </div> -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

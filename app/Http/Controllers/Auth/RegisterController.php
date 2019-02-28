@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'mobile' => ['required', 'string','max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'g-recaptcha-response' => 'required|captcha',
+            // 'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 
@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'no_of_post' => 0,
             'password' => Hash::make($data['password']),
             'g-recaptcha-response' => 'required|captcha',
-            'filename' => 'Dummy-image.jpg',
+            // 'filename' => 'Dummy-image.jpg',
         ]);
 
         //Save role_user default type 1 = user
