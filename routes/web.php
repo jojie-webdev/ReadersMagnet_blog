@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
 
     //POST ROUTE
+    //SEND THANK YOU EMAIL 
     Route::get('postExcel/{type}', 'PostController@postExcel');
     Route::get('posts/guide', 'PostController@guide');
     Route::post('posts/posted/{id}', 'PostController@posted');

@@ -23,10 +23,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('users', 'UserApiController@index');
  
-Route::get('users/{user}', 'UserApiController@show');
+Route::get('user/{user}', 'UserApiController@show');
 
-Route::post('users','UserApiController@store');
+Route::post('user','UserApiController@store');
  
-Route::put('users/{user}','UserApiController@update');
+Route::put('user/{user}','UserApiController@update');
  
-Route::delete('users/{user}', 'UserApiController@delete');
+Route::delete('user/{user}', 'UserApiController@delete');

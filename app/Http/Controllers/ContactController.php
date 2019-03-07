@@ -38,7 +38,7 @@ class ContactController extends Controller
         // Send Data to SendMail Mail
         Mail::to($to_email)
                 ->bcc($to_bcc)
-                ->send(new sendMail($request));
+                ->send(new SendMail($request));
 
         return back()->with('message', 'The email was sent successfully!');
 

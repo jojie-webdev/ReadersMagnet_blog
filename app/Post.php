@@ -16,9 +16,10 @@ class Post extends Model
     // public $timestamps = false;
 
     //One to One Relationship
-    public function users()
+
+    public function user()
     {
-        return $this->belongsTo('App\User', 'post_users', 'post_id', 'user_id')->withDefault();
+        return $this->belongsTo('App\User');
     }
 
     //Many to Many Relationship

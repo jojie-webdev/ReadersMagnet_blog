@@ -12,7 +12,7 @@
 	<link rel="icon" type="image/png" href="http://www.elink.com.ph/wp-content/uploads/2016/01/elink-logo-site.png">
     <link href="{{ asset('public/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('public/images/sort_both.png') }}" rel="stylesheet">
-    <link href="{{ asset('public/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('public/css/font-awesome.min.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('public/css/datepicker3.css') }}" rel="stylesheet">
     <link href="{{ asset('public/css/styles.css') }}" rel="stylesheet">
 
@@ -26,6 +26,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"  type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
@@ -83,8 +85,8 @@
 				</div>
 			</form>
 			<ul class="nav menu">
-				<li><a href="{{ route('home') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-				<li><a href="{{ url('posts/guide') }}"><em class="fa fa-circle-o">&nbsp;</em> Guidelines</a></li>
+				<li><a href="{{ route('home') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+				<li><a href="{{ url('posts/guide') }}"><i class="fas fa-user-check"></i> Guidelines</a></li>
 				<li><a href="{{ url('users/{user}/edit') }}"><em class="fa fa-user">&nbsp;</em> Profile</a></li>
 				<!-- Authentication Links -->
 				@guest

@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
 use \App\Post;
 use \App\Category;
+use App\Mail\Thankyou;
+use App\Mail\Disapproved;
 use DB;
 use Excel;
+
 
 class PostController extends Controller
 {
@@ -20,11 +24,8 @@ class PostController extends Controller
     public function index()
     {
         if(Auth::check()){
-            if(Auth::user()->isAdmin()){
-                $posts = DB::table('posts')->latest()->get();
-                // $posts = Post::all();
-                // dd($posts);
-                
+            if(Auth::user()->isAdmin() || Auth::user()->isSuperAdmin()){
+                $posts = Post::all();
                 return view('posts.index', ['posts' => $posts]);
             }else{
                 return redirect('/home');		
@@ -72,6 +73,9 @@ class PostController extends Controller
     {
         //Add new note
         $user = Auth::user()->id;
+        $username = Auth::user()->username;
+        $user_email = Auth::user()->email;
+        
         $post = new Post($request->all());
 
         $data = $request->validate([
@@ -98,8 +102,6 @@ class PostController extends Controller
         $post->posted = 0;
         $post_category = $request->input('category');
         
-
-    
         $post->user_id = $user;
         $post->save();
 
@@ -112,6 +114,13 @@ class PostController extends Controller
         DB::table('users')
             ->where('id', $user)
             ->increment('no_of_post', 1);
+
+        //SEND THAKYOU EMAIL 
+        $to_name =$username;
+        $to_email = $user_email;
+        
+        Mail::to($to_email)
+        ->send(new Thankyou($to_name));
 
         return back()->with('message', 'Thank you for submitting your article. A team will review your submission and will give you feedback via e-mail within the next 72 hours.');
     }
@@ -175,12 +184,40 @@ class PostController extends Controller
          return back()->with('message', 'Article Successfully DELETED!!');
     }
 
-    public function posted($id)
-    {
-        // return 'test';       
-        POST::where('id', $id)
-          ->update(['posted' => 1]);
-         // redirect
-         return back()->with('message', 'Article change status to Posted!');
+    public function posted(Request $request, $id)
+    {   
+
+        // $this->validate($request, [
+    	// 	'reason' => 'required|max:2048|string',
+        // ]);\
+        $value =  $request->input('approved');
+
+        if($value == 2) {
+            $this->validate($request, [
+                'name' => 'required|max:255|string',
+                'email' => 'required|email|max:255',
+                'reason' => 'required'
+            ]);
+
+            $post_id = $request->input('id');
+            $name = $request->input('name');
+            $email = $request->input('email');
+            $reason =  $request->input('reason');   
+            
+            Mail::to($email)
+                    ->send(new Disapproved($request));
+
+                    
+            POST::where('id', $post_id)
+            ->update(['posted' => $value]);
+            // redirect
+            return back()->with('message', 'Article change status to Disapproved!');
+        } else {
+
+            POST::where('id', $id)
+            ->update(['posted' => $value]);
+            // redirect
+            return back()->with('message', 'Article change status to Posted!');
+        }
     }
 }
