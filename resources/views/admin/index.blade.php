@@ -19,8 +19,43 @@
         <div class="panel panel-default">
             
         <a href="{{ url('downloadExcel/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
-            <div class="panel-heading">Users</div>
-            <table id="users-table" class="table table-striped" data-form="deleteForm">
+            <div class="panel-heading">Users <span class="badge">{{$users->count()}}</span></div>
+            <div class="form-group" style="margin-bottom: 5em!important;">
+                <form name="search" id="search" action="{{url('search')}}" method="GET" class="form-delete">
+                    <input type="hidden" name="_method" value="SEARCH">
+                    {{ csrf_field() }}
+                    <div class="col-lg-1" style="width: 2.333333%;">
+                        <span class="fa fa-filter" title="Filter By" style="color: #777777; font-size: 18px; padding: 5px"></span>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="form-control" name="year" id="year" required>
+                            <option value=" ">Year</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="form-control" name="month" id="month" required>
+                            <option value="all">Show All</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="SEARCH">
+                </form>
+            </div>
+            <table id="users-table" class="table table-striped" data-form="deleteForm" style="margin-top: 50em;">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -116,4 +151,12 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    if ($('#year option').html() !== '') {
+    //   $('#search').submit();
+   }
+});
+</script>
 @endsection

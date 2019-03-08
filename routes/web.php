@@ -37,4 +37,10 @@ Route::group(['middleware' => ['auth']], function() {
     //SEND EMAIL 
     Route::get('contact/form/{id}/{username}/{email}', 'ContactController@showForm')->name('contact.show');
     Route::post('contact', 'ContactController@sendEmail')->name('contact.send');
+
+    //FILTER
+    Route::get('search', 'SearchController@index');
 });
+
+
+
