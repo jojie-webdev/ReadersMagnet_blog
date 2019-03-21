@@ -160,4 +160,13 @@ class UserController extends Controller
         // redirect
         return back()->with('message', 'User Successfully DELETED!!');
     }
+
+    public function postCounter(Request $request, $id)
+    {
+        $user_id = $id;
+        DB::table('users')
+            ->where('id', $user_id)
+            ->increment('no_of_post', 1);
+        return back()->with('message', 'User No. of post updated!!');
+    }
 }

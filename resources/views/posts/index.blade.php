@@ -20,6 +20,42 @@
             </div>
             <div class="panel-body">
                 <h3><strong><a href="#">Show Posts <span class="badge">{{$posts->count()}}</span></a></strong></h3>
+                <div class="form-group" style="margin-bottom: 2em!important;">
+                    <form name="search" id="search" action="{{url('search/posts')}}" method="GET">
+                        <input type="hidden" name="_method" value="SEARCH">
+                        {{ csrf_field() }}
+                        <div class="col-lg-1" style="width: 2.333333%;">
+                            <span class="fa fa-filter" title="Filter By" style="color: #777777; font-size: 18px; padding: 5px"></span>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control" name="year" id="year" required>
+                                <option value=" ">Year</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control" name="month" id="month" required>
+                                <option value="all">Show All</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="SEARCH">
+                        <input type="submit" class="btn btn-success download-article" name="excel" value="Search & Download">
+                    </form>
+                </div>
                 <hr />
                 <div class="pull-left" style="margin-bottom: 5px;">
                     <a href="{{ url('postExcel/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>

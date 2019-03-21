@@ -91,6 +91,14 @@
                                 @else 
                 					{{ 0 }}
                 				@endif
+                                &nbsp;
+                                <form action="{{url('users/postcounter', [$user->id])}}" method="POST">
+                                    <input type="hidden" name="_method" value="POST">
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </form>
                             </td>
                             <!-- show action if user is admin -->
                             @if (Auth::user()->isAdmin() || Auth::user()->isSuperAdmin())

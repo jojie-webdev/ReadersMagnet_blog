@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Events\FormSubmitted;
+use Illuminate\Http\Request;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +28,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('downloadExcel/{type}', 'UserController@downloadExcel');
     Route::get('/users/displaydata', 'UserController@create');
     Route::get('index', 'UserController@index');
+    Route::post('users/postcounter/{id}', 'UserController@postCounter');
     Route::resource('users', 'UserController');
 
     //POST ROUTE
@@ -40,6 +44,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     //FILTER
     Route::get('search', 'SearchController@index');
+    Route::get('search/posts', 'SearchController@posts');
+
 });
 
 

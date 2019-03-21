@@ -57,7 +57,6 @@ class PostController extends Controller
         return view('posts.guide');
     }
 
-
     public function create()
     {
         return view('posts.create');
@@ -177,16 +176,15 @@ class PostController extends Controller
     {
         // return 'test';
         // delete
-         $post = Post::find($id);
-         $post->delete();
- 
-         // redirect
-         return back()->with('message', 'Article Successfully DELETED!!');
+        $post = Post::find($id);
+        $post->delete();
+
+        // redirect
+        return back()->with('message', 'Article Successfully DELETED!!');
     }
 
     public function posted(Request $request, $id)
     {   
-
         // $this->validate($request, [
     	// 	'reason' => 'required|max:2048|string',
         // ]);\
