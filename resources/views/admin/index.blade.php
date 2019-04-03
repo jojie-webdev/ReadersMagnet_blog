@@ -10,7 +10,21 @@
         </ul>
     </div>
 @endif
-
+<style>
+    .button-counter {
+        background: none;
+        color: black;
+        border: none;
+    }
+    .button-counter:hover {
+        background: none;
+        color: black;
+        border: none;
+    }
+    .no-of-post {
+        margin-top: .4em;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12">
         <div style="padding: 20px 5px; text-decoration: underline!important;"><a href="{{ URL::previous() }}">Go Back</a></div>
@@ -85,17 +99,17 @@
                             <td>{{$user->username}}</td>
                             <td>{{$user->mobile}}</td>
                             <td>{{$user->email}}</td>
-                            <td>
+                            <td style="display: flex;">
                                 @if ($user->no_of_post != null)
-                					{{ $user->no_of_post }}
+                					<span class="no-of-post">{{ $user->no_of_post }}</span>
                                 @else 
-                					{{ 0 }}
+                                    <span class="no-of-post">{{ 0 }}</span>
                 				@endif
                                 &nbsp;
                                 <form action="{{url('users/postcounter', [$user->id])}}" method="POST">
                                     <input type="hidden" name="_method" value="POST">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary button-counter">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </form>

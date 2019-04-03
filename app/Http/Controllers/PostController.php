@@ -102,6 +102,23 @@ class PostController extends Controller
         $post_category = $request->input('category');
         
         $post->user_id = $user;
+
+        
+        //get all user activity date
+        $post_created = Post::select('created_at')
+                        ->whereDate('created_at', '=', date('Y-m-d'))
+                        ->where('user_id', '=', $user)
+                        ->get();
+
+        $message = 'You can only post 6 articles per day please click the back arrow at the top left';
+
+        // return count($post_created);
+        $count_date = count($post_created);
+
+        if($count_date >= 3) {
+            return "<script type='text/javascript'>alert('$message');</script>";
+        }
+
         $post->save();
 
         //Save post_category
