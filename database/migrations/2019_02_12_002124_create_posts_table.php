@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->text('post_content', 10000);
             $table->text('excerpt', 10000);
             $table->string('image');
+            $table->boolean('posted')->default(0);
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

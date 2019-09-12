@@ -138,7 +138,7 @@ class PostController extends Controller
         Mail::to($to_email)
         ->send(new Thankyou($to_name));
 
-        return back()->with('message', 'Thank you for submitting your article. A team will review your submission and will give you feedback via e-mail within the next 72 hours.');
+        return back();
     }
 
     /**

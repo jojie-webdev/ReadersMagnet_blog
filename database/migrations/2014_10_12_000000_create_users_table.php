@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->default('phone number');
             $table->string('password');
             $table->string('email')->unique();
-            $table->integer('no_of_post');
+            $table->integer('no_of_post')->default(0);
             $table->string('filename')->default('avatar5.png');
             $table->string('remember_token')->nullable();
             $table->timestamps();
