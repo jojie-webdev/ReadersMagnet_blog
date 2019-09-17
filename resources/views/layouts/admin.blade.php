@@ -66,10 +66,15 @@
 			<div class="profile-sidebar">
 				<div class="profile-userpic">
 				
-				@if (File::exists(public_path("assets/uploads/".Auth::user()->filename)))
+				<!-- @if (File::exists(public_path("assets/uploads/".Auth::user()->filename)))
 					<img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" alt="User Image">
 				@else 
 					<img src="{{ asset('public/uploads/Dummy-image.jpg')}}">
+				@endif -->
+				@if (File::exists(public_path("assets/uploads/".Auth::user()->filename)))
+					<img src="{{ asset('public/uploads/'.Auth::user()->filename)  }}" class="img-circle master" width="150" height="150" alt="User Image">
+				@else 
+					<img src="{{ asset('public/uploads/'.Auth::user()->filename)}}" class="img-circle master" width="150" height="150">
 				@endif
 				</div>
 				<div class="profile-usertitle">

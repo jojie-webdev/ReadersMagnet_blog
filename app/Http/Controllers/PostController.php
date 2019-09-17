@@ -132,13 +132,13 @@ class PostController extends Controller
             ->increment('no_of_post', 1);
 
         //SEND THAKYOU EMAIL 
-        $to_name =$username;
-        $to_email = $user_email;
+        // $to_name =$username;
+        // $to_email = $user_email;
         
-        Mail::to($to_email)
-        ->send(new Thankyou($to_name));
+        // Mail::to($to_email)
+        // ->send(new Thankyou($to_name));
 
-        return back();
+        return back()->with('message', 'Your Post has been submitted! Thank you!');
     }
 
     /**
